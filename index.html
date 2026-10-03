@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Cake</title>
+
+<style>
+
+/* =====================================================
+   CẤU HÌNH
+===================================================== */
+
+:root {
+
+    --pink: #f4a9bd;
+    --pink-dark: #e98da8;
+
+    --bottom-delay: .6s;
+    --middle-delay: 1.5s;
+    --top-delay: 2.4s;
+
+    --photo-delay: 3.5s;
+
+    --party-delay: 1.3s;
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+
+    margin: 0;
+
+    overflow: hidden;
+
+    display: grid;
+    place-items: center;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #ffffff 0%,
+            #fff5f8 40%,
+            #ffdce8 100%
+        );
+}
+
+
+/* =====================================================
+   KHUNG BÁNH
+===================================================== */
+
+.cake {
+
+    position: relative;
+
+    width: 650px;
+    height: 720px;
+}
+
+
+/* =====================================================
+   ĐĨA BÁNH
+===================================================== */
+
+.plate {
+
+    position: absolute;
+
+    z-index: 1;
+
+    width: 610px;
+    height: 65px;
+
+    left: 50%;
+    bottom: 45px;
+
+    transform:
+        translateX(-50%)
+        scale(.7);
+
+    border: 5px solid #ead9df;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 12px 20px
+        rgba(0, 0, 0, .20);
+
+    opacity: 0;
+
+    animation:
+        plateIn
+        .7s
+        ease-out
+        .2s
+        forwards;
+}
+
+
+@keyframes plateIn {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   CÁC TẦNG BÁNH
+===================================================== */
+
+.layer {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        translateY(180px)
+        scale(.8);
+
+    opacity: 0;
+
+    border: 5px solid #edbdca;
+
+    box-shadow:
+
+        inset 0 -25px 0
+        rgba(245, 180, 200, .45),
+
+        0 10px 15px
+        rgba(0, 0, 0, .15);
+
+    animation:
+
+        layerIn
+        1s
+        cubic-bezier(.2, .8, .3, 1.3)
+        forwards;
+}
+
+
+/* =====================================================
+   ANIMATION CHUNG CỦA TẦNG
+===================================================== */
+
+@keyframes layerIn {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(180px)
+            scale(.8);
+    }
+
+
+    70% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(-7px)
+            scale(1.03);
+    }
+
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   TẦNG ĐÁY
+===================================================== */
+
+.bottom {
+
+    z-index: 3;
+
+    width: 550px;
+    height: 190px;
+
+    top: 430px;
+
+    border-radius:
+        50% 50% 35px 35px;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            #fffaf1,
+            #ffe7ee
+        );
+
+    animation-delay:
+        var(--bottom-delay);
+}
+
+
+.bottom::before {
+
+    content:
+        "🌸  🍓  🌸  🍓  🌸  🍓  🌸";
+
+    position: absolute;
+
+    top: -27px;
+
+    left: 50%;
+
+    width: 100%;
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+
+    font-size: 27px;
+
+    white-space: nowrap;
+}
+
+
+.bottom::after {
+
+    content: "🎀";
+
+    position: absolute;
+
+    left: 50%;
+    top: 78px;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 55px;
+}
+
+
+/* =====================================================
+   TẦNG GIỮA
+===================================================== */
+
+.middle {
+
+    z-index: 4;
+
+    width: 430px;
+    height: 170px;
+
+    top: 285px;
+
+    border-radius:
+        50% 50% 30px 30px;
+
+    background: #f8c9d5;
+
+    animation-delay:
+        var(--middle-delay);
+}
+
+
+.middle::before {
+
+    content:
+        "🍓  🌸  🍓  🌸  🍓";
+
+    position: absolute;
+
+    top: -25px;
+
+    left: 50%;
+
+    width: 100%;
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+
+    font-size: 27px;
+
+    white-space: nowrap;
+}
+
+
+.middle::after {
+
+    content: "🎀";
+
+    position: absolute;
+
+    left: 50%;
+    top: 62px;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 45px;
+}
+
+
+/* =====================================================
+   TẦNG TRÊN
+===================================================== */
+
+.top {
+
+    z-index: 5;
+
+    width: 310px;
+    height: 145px;
+
+    top: 160px;
+
+    border-radius:
+        50% 50% 25px 25px;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            #fffaf0,
+            #ffeef2
+        );
+
+    animation-delay:
+        var(--top-delay);
+}
+
+
+.top::before {
+
+    content:
+        "🍓  🌸  🍓  🌸  🍓";
+
+    position: absolute;
+
+    top: -25px;
+
+    left: 50%;
+
+    width: 100%;
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+
+    font-size: 25px;
+
+    white-space: nowrap;
+}
+
+
+.top::after {
+
+    content: "🎀";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 15px;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 45px;
+}
+
+
+/* =====================================================
+   QUE GIỮ ẢNH
+===================================================== */
+
+.photo-stick {
+
+    position: absolute;
+
+    z-index: 2;
+
+    top: 150px;
+
+    left: 50%;
+
+    width: 10px;
+    height: 100px;
+
+    transform:
+        translateX(-50%)
+        translateY(80px);
+
+    background: #d99a63;
+
+    border-radius: 10px;
+
+    opacity: 0;
+
+    animation:
+
+        stickIn
+        .7s
+        ease-out
+        3.1s
+        forwards;
+}
+
+
+@keyframes stickIn {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+}
+
+
+/* =====================================================
+   ẢNH TRÊN ĐỈNH
+===================================================== */
+
+.photo {
+
+    position: absolute;
+
+    z-index: 10;
+
+    top: 0;
+
+    left: 50%;
+
+    width: 180px;
+    height: 180px;
+
+    transform:
+
+        translateX(-50%)
+        translateY(150px)
+        scale(.45);
+
+    padding: 7px;
+
+    border:
+
+        5px solid
+        #f3b0c3;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+
+        0 5px 20px
+        rgba(0,0,0,.25),
+
+        0 0 0 5px
+        rgba(255,255,255,.8);
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    animation:
+
+        photoIn
+        1.2s
+        cubic-bezier(.2,.8,.3,1.4)
+        var(--photo-delay)
+        forwards;
+}
+
+
+.photo img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+
+@keyframes photoIn {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+
+            translateX(-50%)
+            translateY(150px)
+            scale(.45);
+    }
+
+
+    60% {
+
+        opacity: 1;
+
+        transform:
+
+            translateX(-50%)
+            translateY(-12px)
+            scale(1.06);
+    }
+
+
+    80% {
+
+        transform:
+
+            translateX(-50%)
+            translateY(4px)
+            scale(.98);
+    }
+
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   NẾN
+===================================================== */
+
+.candle {
+
+    position: absolute;
+
+    z-index: 8;
+
+    top: 120px;
+
+    left: 50%;
+
+    width: 12px;
+    height: 45px;
+
+    transform:
+        translateX(-50%)
+        translateY(30px);
+
+    border-radius: 5px;
+
+    background:
+
+        repeating-linear-gradient(
+            45deg,
+            #ff9eb5 0 5px,
+            #ffffff 5px 10px
+        );
+
+    opacity: 0;
+
+    animation:
+
+        candleIn
+        .6s
+        ease-out
+        3s
+        forwards;
+}
+
+
+@keyframes candleIn {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+}
+
+
+.flame {
+
+    position: absolute;
+
+    top: -27px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 28px;
+
+    animation:
+        flame
+        .45s
+        infinite
+        alternate;
+}
+
+
+@keyframes flame {
+
+    to {
+
+        transform:
+            translateX(-50%)
+            scale(1.15)
+            rotate(3deg);
+    }
+}
+
+
+/* =====================================================
+   KHU VỰC HIỆU ỨNG
+===================================================== */
+
+.party {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   PHÁO GIẤY
+===================================================== */
+
+.confetti {
+
+    position: absolute;
+
+    width: 8px;
+    height: 15px;
+
+    top: 50%;
+
+    opacity: 0;
+
+    background:
+        var(--color);
+
+    animation:
+
+        confettiFly
+        var(--duration)
+        cubic-bezier(.15,.7,.25,1)
+        var(--delay)
+        forwards;
+}
+
+
+@keyframes confettiFly {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(0, 0)
+            rotate(0)
+            scale(.5);
+    }
+
+
+    25% {
+
+        opacity: 1;
+
+        transform:
+
+            translate(
+                var(--x1),
+                var(--y1)
+            )
+
+            rotate(180deg);
+    }
+
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+
+            translate(
+                var(--x2),
+                100vh
+            )
+
+            rotate(
+                var(--rotation)
+            );
+    }
+}
+
+
+/* =====================================================
+   RUY-BĂNG
+===================================================== */
+
+.ribbon {
+
+    position: absolute;
+
+    top: 42%;
+
+    width: 6px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    background:
+        var(--color);
+
+    opacity: 0;
+
+    animation:
+
+        ribbonFly
+        var(--duration)
+        ease-out
+        var(--delay)
+        forwards;
+}
+
+
+@keyframes ribbonFly {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            rotate(0)
+            scale(.3);
+    }
+
+
+    15% {
+
+        opacity: 1;
+    }
+
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+
+            translate(
+                var(--x),
+                100vh
+            )
+
+            rotate(
+                var(--rotation)
+            )
+
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   LẤP LÁNH
+===================================================== */
+
+.sparkle {
+
+    position: absolute;
+
+    top: 35%;
+
+    font-size: 20px;
+
+    opacity: 0;
+
+    animation:
+
+        sparkle
+        2s
+        ease-out
+        forwards;
+}
+
+
+@keyframes sparkle {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(.2);
+    }
+
+
+    30% {
+
+        opacity: 1;
+
+        transform:
+
+            translate(
+                var(--x),
+                var(--y)
+            )
+
+            scale(1.4);
+    }
+
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+
+            translate(
+                var(--x),
+                var(--y2)
+            )
+
+            scale(.4);
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .cake {
+
+        transform:
+            scale(.65);
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .cake {
+
+        transform:
+            scale(.48);
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ===================================================
+     BÁNH
+=================================================== -->
+
+<div class="cake">
+
+
+    <!-- ĐĨA -->
+
+    <div class="plate"></div>
+
+
+    <!-- TẦNG ĐÁY -->
+
+    <div class="layer bottom"></div>
+
+
+    <!-- TẦNG GIỮA -->
+
+    <div class="layer middle"></div>
+
+
+    <!-- TẦNG TRÊN -->
+
+    <div class="layer top"></div>
+
+
+    <!-- QUE ẢNH -->
+
+    <div class="photo-stick"></div>
+
+
+    <!-- ẢNH
+         ẢNH ĐƯỢC LẤY TRỰC TIẾP
+         TỪ THƯ MỤC images
+    -->
+
+    <div class="photo">
+
+        <img
+            src="./images/1.jpg"
+            alt="Ảnh sinh nhật"
+        >
+
+    </div>
+
+
+    <!-- NẾN -->
+
+    <div class="candle">
+
+        <div class="flame">
+            🔥
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- ===================================================
+     HIỆU ỨNG PHÁO GIẤY
+=================================================== -->
+
+<div
+    class="party"
+    id="party"
+></div>
+
+
+<script>
+
+/* =====================================================
+   CẤU HÌNH
+===================================================== */
+
+const CONFIG = {
+
+    /*
+       Thời điểm ảnh bắt đầu xuất hiện.
+       Tương ứng với --photo-delay ở CSS.
+    */
+
+    photoDelay: 3500,
+
+
+    /*
+       Sau khi ảnh xuất hiện xong
+       thì chờ thêm thời gian này
+       rồi mới bắn pháo giấy.
+    */
+
+    partyDelay: 1300,
+
+
+    /*
+       Số lượng pháo giấy
+    */
+
+    confetti: 150,
+
+
+    /*
+       Số lượng ruy-băng
+    */
+
+    ribbons: 45,
+
+
+    /*
+       Số lượng ánh sáng
+    */
+
+    sparkles: 30
+
+};
+
+
+/* =====================================================
+   MÀU HIỆU ỨNG
+===================================================== */
+
+const COLORS = [
+
+    "#ff4f81",
+    "#ffcc00",
+    "#4ecdc4",
+    "#6c63ff",
+    "#ff8c42",
+    "#65d66e",
+    "#ff5c5c",
+    "#ffffff",
+    "#ff9de2"
+
+];
+
+
+/* =====================================================
+   RANDOM
+===================================================== */
+
+function random(min, max) {
+
+    return Math.random()
+        * (max - min)
+        + min;
+
+}
+
+
+function randomColor() {
+
+    return COLORS[
+        Math.floor(
+            Math.random()
+            * COLORS.length
+        )
+    ];
+
+}
+
+
+/* =====================================================
+   TẠO PHÁO GIẤY
+===================================================== */
+
+function createConfetti() {
+
+    const party =
+        document.getElementById(
+            "party"
+        );
+
+
+    for (
+        let i = 0;
+        i < CONFIG.confetti;
+        i++
+    ) {
+
+        const confetti =
+            document.createElement(
+                "div"
+            );
+
+
+        confetti.className =
+            "confetti";
+
+
+        /*
+           50% bắn từ trái
+           50% bắn từ phải
+        */
+
+        const fromLeft =
+            i <
+            CONFIG.confetti / 2;
+
+
+        confetti.style.left =
+            fromLeft
+                ? random(0, 12) + "%"
+                : random(88, 100) + "%";
+
+
+        confetti.style.setProperty(
+            "--color",
+            randomColor()
+        );
+
+
+        confetti.style.setProperty(
+
+            "--x1",
+
+            (
+                fromLeft
+                    ? random(100, 450)
+                    : random(-450, -100)
+            )
+            + "px"
+
+        );
+
+
+        confetti.style.setProperty(
+
+            "--x2",
+
+            (
+                fromLeft
+                    ? random(100, 650)
+                    : random(-650, -100)
+            )
+            + "px"
+
+        );
+
+
+        confetti.style.setProperty(
+
+            "--y1",
+
+            -random(100, 350)
+            + "px"
+
+        );
+
+
+        confetti.style.setProperty(
+
+            "--rotation",
+
+            random(-900, 900)
+            + "deg"
+
+        );
+
+
+        confetti.style.setProperty(
+
+            "--duration",
+
+            random(2, 4)
+            + "s"
+
+        );
+
+
+        confetti.style.setProperty(
+
+            "--delay",
+
+            random(0, .7)
+            + "s"
+
+        );
+
+
+        /*
+           Kích thước ngẫu nhiên
+        */
+
+        confetti.style.width =
+            random(5, 11) + "px";
+
+
+        confetti.style.height =
+            random(9, 19) + "px";
+
+
+        party.appendChild(
+            confetti
+        );
+
+
+        /*
+           Xóa DOM sau khi chạy
+        */
+
+        setTimeout(
+            () => confetti.remove(),
+            5500
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   TẠO RUY-BĂNG
+===================================================== */
+
+function createRibbons() {
+
+    const party =
+        document.getElementById(
+            "party"
+        );
+
+
+    for (
+        let i = 0;
+        i < CONFIG.ribbons;
+        i++
+    ) {
+
+        const ribbon =
+            document.createElement(
+                "div"
+            );
+
+
+        ribbon.className =
+            "ribbon";
+
+
+        ribbon.style.left =
+            random(0, 100) + "%";
+
+
+        ribbon.style.height =
+            random(60, 140) + "px";
+
+
+        ribbon.style.width =
+            random(4, 9) + "px";
+
+
+        ribbon.style.setProperty(
+            "--color",
+            randomColor()
+        );
+
+
+        ribbon.style.setProperty(
+
+            "--x",
+
+            random(-500, 500)
+            + "px"
+
+        );
+
+
+        ribbon.style.setProperty(
+
+            "--rotation",
+
+            random(-1000, 1000)
+            + "deg"
+
+        );
+
+
+        ribbon.style.setProperty(
+
+            "--duration",
+
+            random(3, 5)
+            + "s"
+
+        );
+
+
+        ribbon.style.setProperty(
+
+            "--delay",
+
+            random(0, .7)
+            + "s"
+
+        );
+
+
+        party.appendChild(
+            ribbon
+        );
+
+
+        setTimeout(
+            () => ribbon.remove(),
+            6500
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   TẠO LẤP LÁNH
+===================================================== */
+
+function createSparkles() {
+
+    const party =
+        document.getElementById(
+            "party"
+        );
+
+
+    const symbols = [
+
+        "✨",
+        "⭐",
+        "✦",
+        "💫"
+
+    ];
+
+
+    for (
+        let i = 0;
+        i < CONFIG.sparkles;
+        i++
+    ) {
+
+        const sparkle =
+            document.createElement(
+                "div"
+            );
+
+
+        sparkle.className =
+            "sparkle";
+
+
+        sparkle.textContent =
+            symbols[
+                Math.floor(
+                    Math.random()
+                    * symbols.length
+                )
+            ];
+
+
+        sparkle.style.left =
+            random(20, 80)
+            + "%";
+
+
+        sparkle.style.setProperty(
+
+            "--x",
+
+            random(-300, 300)
+            + "px"
+
+        );
+
+
+        sparkle.style.setProperty(
+
+            "--y",
+
+            -random(50, 300)
+            + "px"
+
+        );
+
+
+        sparkle.style.setProperty(
+
+            "--y2",
+
+            random(100, 350)
+            + "px"
+
+        );
+
+
+        sparkle.style.animationDelay =
+            random(0, .8)
+            + "s";
+
+
+        party.appendChild(
+            sparkle
+        );
+
+
+        setTimeout(
+            () => sparkle.remove(),
+            3500
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   BẮT ĐẦU HIỆU ỨNG TIỆC
+===================================================== */
+
+/*
+
+   3 tầng bánh
+       ↓
+   ảnh xuất hiện
+       ↓
+   chờ 1.3 giây
+       ↓
+   PHÁO GIẤY
+   RUY-BĂNG
+   LẤP LÁNH
+
+*/
+
+setTimeout(
+
+    () => {
+
+        createConfetti();
+
+        createRibbons();
+
+        createSparkles();
+
+    },
+
+    CONFIG.photoDelay
+    + CONFIG.partyDelay
+
+);
+
+</script>
+
+</body>
+</html>
